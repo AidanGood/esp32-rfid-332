@@ -195,12 +195,19 @@ esp_err_t rc522_init(rc522_config_t* config) {
     }
     
     // ---------- RW test ------------
+    // make it fail then retry the test instead of just failing 
+    // if you want it just fail and return uncomment out the if statement and uncomment the while loop
     const uint8_t test_addr = 0x24, test_val = 0x25;
     for(uint8_t i = test_val; i < test_val + 2; i++) {
-        if((err = rc522_write(test_addr, i)) != ESP_OK || rc522_read(test_addr) != i) {
+        // if((err = rc522_write(test_addr, i)) != ESP_OK || rc522_read(test_addr) != i) {
+        //     ESP_LOGE(TAG, "RW test fail");
+        //     rc522_destroy();
+        //     return err;
+        // }
+        
+        while((err = rc522_write(test_addr, i)) != ESP_OK || rc522_read(test_addr) != i) {
             ESP_LOGE(TAG, "RW test fail");
-            rc522_destroy();
-            return err;
+            vTaskDelay(pdMS_TO_TICKS(1000));
         }
     }
     // ------- End of RW test --------
