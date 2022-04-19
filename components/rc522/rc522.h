@@ -9,7 +9,7 @@ extern "C" {
 #define RC522_DEFAULT_MISO                 (33)
 #define RC522_DEFAULT_MOSI                 (34)
 #define RC522_DEFAULT_SCK                  (35)
-#define RC522_DEFAULT_SDA                  (36)
+#define RC522_DEFAULT_SDA                  (15)
 #define RC522_DEFAULT_SPI_HOST             (2)
 #define RC522_DEFAULT_SCAN_INTERVAL_MS     (125)
 #define RC522_DEFAULT_TACK_STACK_SIZE      (4 * 1024)
