@@ -25,7 +25,7 @@ void app_main(void) {
 		.miso_io = 33,
 		.mosi_io = 34,
 		.sck_io = 35,
-		.sda_io = 36,
+		.sda_io = 15,
         .callback = &first_contact,
         .callback2 = &continued_contact,
         .callback3 = &removal,
